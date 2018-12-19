@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: 10.39.248.79:5000/cfdd73/strava-net-core
+  tag: 0.0.1
   pullPolicy: IfNotPresent
 service:
   name: strava-net-core
