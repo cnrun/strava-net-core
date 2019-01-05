@@ -52,5 +52,5 @@ RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-${N
     && rm nodejs.tar.gz \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+COPY --from=build-env /app/Strava.NetCore/out .
+ENTRYPOINT ["dotnet", "Strava.NetCore.dll"]
