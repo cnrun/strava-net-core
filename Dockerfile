@@ -3,6 +3,8 @@
 # https://github.com/aspnet/Announcements/issues/298
 FROM microsoft/dotnet:2.2-sdk AS build-env
 WORKDIR /app
+
+RUN dotnet dev-certs https -ep https/Strava.NetCore.pfx -p crypt1cpa55w0rd
 #setup node
 ENV NODE_VERSION 10.15.0
 # Linux
@@ -53,4 +55,11 @@ RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-${N
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 COPY --from=build-env /app/Strava.NetCore/out .
+COPY --from=build-env /app/https ./https
+
+ENV ASPNETCORE_URLS="https://+;http://+"
+ENV ASPNETCORE_HTTPS_PORT=8001
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password="crypt1cpa55w0rd"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=./https/Strava.NetCore.pfx
+
 ENTRYPOINT ["dotnet", "Strava.NetCore.dll"]
