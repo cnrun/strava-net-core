@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\build\packages.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>ASP.NET Core security middleware enabling Strava authentication.</Description>
+    <Authors>James Holcomb;Jack Thorpe</Authors>
+    <PackageTags>aspnetcore;authentication;oauth;security;strava</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="$(JetBrainsVersion)" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="$(AspNetCoreVersion)" />
+  </ItemGroup>
+
+</Project>

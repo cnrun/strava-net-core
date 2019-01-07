@@ -1,0 +1,51 @@
+﻿@using System.Linq;
+@using Strava.Activities;
+
+@model Mvc.Client.Models.ActivitiesModel;
+
+@{
+    ViewBag.Title = "Activities";
+}
+<div class="jumbotron">
+    AccessToken
+    @{
+        Console.WriteLine($"Session {Context.User}");
+        Console.WriteLine($"HttpHeader {string.Join(", ", Context.Request.Headers.Keys)}");
+    }    
+    @Html.Raw("Token="+Context.User.Claims.First(claim=>claim.Type=="token")+"<BR>")
+
+    @if (User?.Identity?.IsAuthenticated ?? false) {
+        <h1>Welcome, @User.Identity.Name</h1>
+        <h2>Activities</h2>
+        @Html.Raw("Token="+Model.Token+"<BR>");
+        <p>Model:</p>
+        @Model
+        <p>-------</p>
+        <br>@User
+        <br>@User.Identity
+        <br>@User.Identity.AuthenticationType
+        <br>@User.Identity.IsAuthenticated
+        <p>
+            @foreach (var claim in Context.User.Claims) {
+                <div>@claim.Type: <b>@claim.Value</b></div>
+            }
+        </p>
+        <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+        @foreach (ActivitySummary activity in Model.Activities)
+        {
+            <tr>
+                <td>@activity.Name</td>
+                <td>@activity.Type</td>
+            </tr>
+        }
+        </table>
+    }
+
+    else {
+        <h1>Welcome, anonymous</h1>
+    }
+</div>
