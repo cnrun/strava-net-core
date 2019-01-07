@@ -1,9 +1,0 @@
-[submodule "AspNet.Security.OAuth.Providers"]
-	path = AspNet.Security.OAuth.Providers
-	url = https://github.com/cfdd73/AspNet.Security.OAuth.Providers.git
-[submodule "Strava.NetCore"]
-	path = Strava.NetCore
-	url = https://github.com/cfdd73/Strava.NetCore.git
-[submodule "stravadotnet"]
-	path = stravadotnet
-	url = https://github.com/cfdd73/stravadotnet.git
