@@ -39,6 +39,8 @@ RUN dotnet publish Strava.NetCore/Strava.NetCore.csproj -c Release -o out
 
 # build runtime image
 FROM microsoft/dotnet:2.2-aspnetcore-runtime
+EXPOSE 80
+EXPOSE 443
 WORKDIR /app
 #setup node, this is only needed if you use Node both at runtime and build time. Some people may only need the build part.
 ENV NODE_VERSION 10.15.0
